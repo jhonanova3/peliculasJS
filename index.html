@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="shortcut icon" href="icono.png">
+  <title>Tus Pelis</title>
+</head>
+
+<body>
+  <header>
+    <img src="logo.png" alt="Logo de la Página">
+  <h1> TUS PELIS </h1>
+</header>
+  <main>
+    <form action="" id="formulario">
+
+      <ul>
+        <li>
+          <label for="name">Nombre de la Película:</label>
+          <input type="text" id="name" name="nombrePelicula">
+        </li>
+        <li>
+          <label for="link">Link para ver la Película:</label>
+          <input type="text" id="link" name="linkPelicula">
+        </li>
+        <li>
+          <label for="calificacion">Calificación:</label>
+          <input type="number" id="calificacion" min="0" max="10" name="calificacionPelicula">
+        </li>
+        <li>
+          <label for="poster">Poster:</label>
+          <input type="text" id="poster" name="posterPelicula">
+        </li>
+
+      </ul>
+
+      <button>
+        Agregar
+      </button>
+    </form>
+  </main>
+  <div id="listadoPeliculas">
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
