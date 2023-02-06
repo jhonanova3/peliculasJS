@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://cdn.jsdelivr.net/npm/css.gg/icons/all.css' rel='stylesheet'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="estilos.css">
   <link rel="shortcut icon" href="icono.png">
   <title>Tus Pelis</title>
@@ -14,8 +17,8 @@
 <body>
   <header>
     <img src="logo.png" alt="Logo de la Página">
-  <h1> TUS PELIS </h1>
-</header>
+    <h1> TUS PELIS </h1>
+  </header>
   <main>
     <form action="" id="formulario">
 
@@ -44,13 +47,23 @@
       </button>
     </form>
   </main>
+
+  <div class="contenedorFiltros">
+    <div class="filtro">
+      <label for="filtroVistas"> Filtrar vistas</label>
+      <input type="checkbox" name="filtroVistas" id="filtroVistas">
+    </div>
+  </div>
+
   <div id="listadoPeliculas">
 
   </div>
+
+  <footer>
+    <h5> Hecho por <a href="https://www.linkedin.com/in/jhonanova3/" target="_blank">Jhonathan Nova</a></h5>
+  </footer>
 
   <script src="script.js"></script>
 </body>
 
 </html>
-
-

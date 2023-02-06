@@ -3,6 +3,8 @@ const nombreInput = document.getElementById("name");
 const linkInput = document.getElementById("link");
 const calificacionInput = document.getElementById("calificacion");
 const posterInput = document.getElementById("poster");
+const filtroVistasCheck = document.getElementById("filtroVistas");
+let estadoFiltroVista = false;
 
 let listaPeliculas = []
 
@@ -46,33 +48,37 @@ const mostrarPeliculas = () => {
     const contenedorPeliculas = document.getElementById("listadoPeliculas");
     contenedorPeliculas.innerHTML = " ";
     for (let i = 0; i < listaPeliculas.length; i++) {
-        contenedorPeliculas.innerHTML += `
+        if ((estadoFiltroVista && !listaPeliculas[i].estaVista) || !estadoFiltroVista) {
+
+
+            contenedorPeliculas.innerHTML += `
      <div class="pelicula">
-        ${listaPeliculas[i].estaVista ? `<button class="botonVisto vista" onClick="marcarVista(${i})">YA VISTA<i class="gg-eye"></i></button>`: `<button  class="botonVisto" onClick="marcarVista(${i})">PENDIENTE<i class="gg-eye"></i></button>`}
-        <button class="botonQuitar" onclick="eliminarPelicula(${i})">❌</button>
+        ${listaPeliculas[i].estaVista ? `<button class="botonVisto vista" onClick="marcarVista(${i})">YA VISTA<i class="gg-eye"></i></button>` : `<button  class="botonVisto" onClick="marcarVista(${i})">PENDIENTE<i class="gg-eye"></i></button>`}
+     <button class="botonQuitar" onclick="eliminarPelicula(${i})">❌</button>
      <img src="${listaPeliculas[i].poster}" alt="Poster de ${listaPeliculas[i].nombre}">
      <h4> ${listaPeliculas[i].nombre} </h4>
      <h6>${generarCorazones(listaPeliculas[i].calificacion)} </h6>
      <a href="${listaPeliculas[i].link}">Ver Pelicula</a>
    </div> `
+        }
     }
 }
 
-const marcarVista = posicion => { 
+const marcarVista = posicion => {
     listaPeliculas[posicion].estaVista = !listaPeliculas[posicion].estaVista;
     mostrarPeliculas();
     guardarPeliculas();
-} 
+}
 
 const generarCorazones = cantCorazones => {
     let puntuacion = "";
     for (let i = 0; i < 5; i++) {
-        if(i < cantCorazones){
+        if (i < cantCorazones) {
             puntuacion += "💜";
         } else {
             puntuacion += "🖤";
         }
-        
+
     }
     return puntuacion;
 }
@@ -82,7 +88,17 @@ formulario.addEventListener("submit", enviarFormulario);
 
 
 const eliminarPelicula = posicion => {
-    listaPeliculas = listaPeliculas.filter((pelicula, index)=> index !== posicion);
+    listaPeliculas = listaPeliculas.filter((pelicula, index) => index !== posicion);
     mostrarPeliculas();
     guardarPeliculas();
 }
+
+const aplicarFiltroVistas = (evento) => {
+    estadoFiltroVista = evento.target.checked;
+    mostrarPeliculas();
+}
+
+
+filtroVistasCheck.addEventListener("click", aplicarFiltroVistas);
+
+
